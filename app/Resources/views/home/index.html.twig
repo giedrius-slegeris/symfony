@@ -1,5 +1,6 @@
 {% extends 'init.html.twig' %}
 
+{# set page title #}
 {% block title %}
   {{ title }}
 {% endblock %}
@@ -8,7 +9,13 @@
 
 <div class="row">
   <div class="col-sm-12">
-    <p>Alternative Homepage</p>
+    <h1>Home</h1>
+
+    {# greet with URL parameter #}
+    {% if name is defined %}
+      <h3>Hello {{ name }}!</h3>
+    {% endif %}
+
   </div>
 </div>
 

@@ -24,7 +24,7 @@ class HomeController extends Controller
     /**
     * @Route("/home/v2")
     */
-    public function index_v2(Request $request){
+    public function homeV2(Request $request){
       return $this->render('home/index.html.twig', array(
           'title' => 'Different title!!!'
       ));
@@ -33,11 +33,22 @@ class HomeController extends Controller
     /**
     * @Route("/home/api")
     */
-    public function index_v3(Request $request){
+    public function homeAPI(Request $request){
 
       // API response
       return new JsonResponse([
         'name' => 'Giedrius'
+      ]);
+    }
+
+    /**
+    * @Route("/home/{name}")
+    */
+    public function homeName(Request $request, string $name){
+
+      return $this->render('home/index.html.twig', [
+          'title' => 'Different title!!!',
+          'name' => $name
       ]);
     }
 }
