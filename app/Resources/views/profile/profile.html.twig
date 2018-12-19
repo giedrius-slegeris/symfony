@@ -11,7 +11,15 @@
   <div class="col-sm-12">
 
     <p>Profile page</p>
-    <p>Another sentence to the profile page</p>
+    <p><a href="{{ path('add_profile') }}">Add profile</a></p>
+
+    <hr />
+    <p>
+      {# standard foreach loop #}
+      {% for profile_id in profiles %}
+        <a href="{{ path('profileID', {'user_id': profile_id}) }}">Profile page / {{ profile_id }}</a><br />
+      {% endfor %}
+    </p>
 
   </div>
 </div>
