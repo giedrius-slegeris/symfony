@@ -11,13 +11,14 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class HomeController extends Controller
 {
     /**
-     * @Route("/home", name="homepage_v2")
+     * @Route("/", name="home")
      */
     public function index(Request $request)
     {
         // replace this example code with whatever you need
         return $this->render('home/index.html.twig', array(
-            'title' => 'Alternative homepage'
+            'title' => 'Homepage',
+            'name' => 'Giedrius'
         ));
     }
 
@@ -31,13 +32,14 @@ class HomeController extends Controller
     }
 
     /**
-    * @Route("/home/api")
+    * @Route("/api", name="homeapi")
     */
     public function homeAPI(Request $request){
 
       // API response
       return new JsonResponse([
-        'name' => 'Giedrius'
+        'name' => 'Giedrius',
+        'reason' => 'rocks!'
       ]);
     }
 
@@ -47,7 +49,7 @@ class HomeController extends Controller
     public function homeName(Request $request, string $name){
 
       return $this->render('home/index.html.twig', [
-          'title' => 'Different title!!!',
+          'title' => 'Route with name',
           'name' => $name
       ]);
     }
