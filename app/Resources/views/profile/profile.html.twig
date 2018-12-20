@@ -16,8 +16,8 @@
     <hr />
     <p>
       {# standard foreach loop #}
-      {% for profile_id in profiles %}
-        <a href="{{ path('profileID', {'user_id': profile_id}) }}">Profile page / {{ profile_id }}</a><br />
+      {% for i in 1..profiles %}
+        <a href="{{ path('profileID', {'user_id': i}) }}">Profile page / {{ i }}</a><br />
       {% endfor %}
     </p>
 
