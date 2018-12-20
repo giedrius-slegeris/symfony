@@ -5,11 +5,19 @@ namespace AppBundle;
 class User
 {
 
+  protected $titles = [
+    'Mr',
+    'Ms',
+    'Mrs',
+    'Dr',
+    'Mx'
+  ];
+
   public function getUsers() : array {
     return [
       [
         'id' => 1,
-        'title' => 'Mr',
+        'title' => 'Dr',
         'fname' => 'Giedrius',
         'lname' => 'Slegeris',
         'email' => 'giedrius@test.com',
@@ -20,6 +28,10 @@ class User
         'country' => 'UK'
       ]
     ];
+  }
+
+  public function getTitles(){
+    return $this->titles;
   }
 
 }

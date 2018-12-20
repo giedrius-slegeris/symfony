@@ -11,17 +11,21 @@ use AppBundle\User;
 class ProfileController extends Controller
 {
 
+  private $user;
+
+  public function __construct(){
+    $this->user = new User();
+  }
+
   /**
    * @Route("/profile", name="profile")
    */
   public function profile(Request $request)
   {
-    $user = new User();
-
     return $this->render('profile/profile.html.twig', array(
         'title' => 'Profile page',
         'name' => 'Giedrius profile',
-        'profiles' => count($user->getUsers())
+        'profiles' => count($this->user->getUsers())
     ));
   }
 
@@ -32,7 +36,8 @@ class ProfileController extends Controller
   {
       return $this->render('profile/profile_add.html.twig', array(
           'title' => 'Add new profile',
-          'call' => $request->getMethod()
+          'call' => $request->getMethod(),
+          'titles' => $this->user->getTitles()
       ));
   }
 
@@ -41,8 +46,7 @@ class ProfileController extends Controller
    */
   public function profileID(Request $request, int $user_id)
   {
-    $userObj = new User();
-    $users = $userObj->getUsers();
+    $users = $this->user->getUsers();
     $user_data = [];
 
     try {
@@ -53,7 +57,8 @@ class ProfileController extends Controller
 
     return $this->render('profile/profile_id.html.twig', array(
         'title' => 'Profile with ID',
-        'profile' => $user_data
+        'profile' => $user_data,
+        'titles' => $this->user->getTitles()
     ));
   }
 

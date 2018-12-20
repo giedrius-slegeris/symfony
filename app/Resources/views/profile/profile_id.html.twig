@@ -49,7 +49,88 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <form>
+
+          <!-- title -->
+          <div class="form-group row">
+            <label for="personTitle" class="col-sm-3 col-form-label col-form-label-sm">Title</label>
+            <div class="col-sm-9">
+              <select name="personTitle" class="form-control form-control-sm">
+
+                {% for title in titles %}
+                  {% set selected = title == profile['title'] ? 'selected' : '' %}
+                  <option value="{{ title }}" {{ selected }}>{{ title }}</option>
+                {% endfor %}
+
+              </select>
+            </div>
+          </div>
+
+          <!-- first name -->
+          <div class="form-group row">
+            <label for="personFname" class="col-sm-3 col-form-label col-form-label-sm">First name</label>
+            <div class="col-sm-9">
+              <input type="text" name="personFname" class="form-control form-control-sm" />
+            </div>
+          </div>
+
+          <!-- last name -->
+          <div class="form-group row">
+            <label for="personLname" class="col-sm-3 col-form-label col-form-label-sm">Last name</label>
+            <div class="col-sm-9">
+              <input type="text" name="personLname" class="form-control form-control-sm" />
+            </div>
+          </div>
+
+          <!-- email -->
+          <div class="form-group row">
+            <label for="personEmail" class="col-sm-3 col-form-label col-form-label-sm">Email</label>
+            <div class="col-sm-9">
+              <input type="email" name="personEmail" class="form-control form-control-sm" />
+            </div>
+          </div>
+
+          <!-- telephone -->
+          <div class="form-group row">
+            <label for="personTel" class="col-sm-3 col-form-label col-form-label-sm">Telephone</label>
+            <div class="col-sm-9">
+              <input type="text" name="personTel" class="form-control form-control-sm" />
+            </div>
+          </div>
+
+          <!-- DOB -->
+          <div class="form-group row">
+            <label for="personDOB" class="col-sm-3 col-form-label col-form-label-sm">Date of birth</label>
+            <div class="col-sm-9">
+              <input type="date" name="personDOB" class="form-control form-control-sm" />
+            </div>
+          </div>
+
+          <!-- address -->
+          <div class="form-group row">
+            <label for="personAdr" class="col-sm-3 col-form-label col-form-label-sm">Address</label>
+            <div class="col-sm-9">
+              <input type="text" name="personAdr" class="form-control form-control-sm" />
+            </div>
+          </div>
+
+          <!-- postcode -->
+          <div class="form-group row">
+            <label for="personPostcode" class="col-sm-3 col-form-label col-form-label-sm">Postcode</label>
+            <div class="col-sm-9">
+              <input type="text" name="personPostcode" class="form-control form-control-sm" />
+            </div>
+          </div>
+
+          <!-- country -->
+          <div class="form-group row">
+            <label for="personCountry" class="col-sm-3 col-form-label col-form-label-sm">Country</label>
+            <div class="col-sm-9">
+              <input type="text" name="personCountry" class="form-control form-control-sm" />
+            </div>
+          </div>
+
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary">Save</button>
