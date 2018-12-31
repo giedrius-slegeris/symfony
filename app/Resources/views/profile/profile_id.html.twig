@@ -37,107 +37,107 @@
     <button type="button" class="btn btn-sm btn-primary" value="Update" data-toggle="modal" data-target="#profile_update_modal">Update</button>
   </div>
 
+  <!-- Profile update modal -->
+  <div class="modal fade" id="profile_update_modal" tabindex="-1" role="dialog" aria-labelledby="profile_update_modal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
 
-<!-- Profile update modal -->
-<div class="modal fade" id="profile_update_modal" tabindex="-1" role="dialog" aria-labelledby="profile_update_modal" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
+            <!-- title -->
+            <div class="form-group row">
+              <label for="personTitle" class="col-sm-3 col-form-label col-form-label-sm">Title</label>
+              <div class="col-sm-9">
+                <select name="personTitle" class="form-control form-control-sm">
 
-          <!-- title -->
-          <div class="form-group row">
-            <label for="personTitle" class="col-sm-3 col-form-label col-form-label-sm">Title</label>
-            <div class="col-sm-9">
-              <select name="personTitle" class="form-control form-control-sm">
+                  {# auto select a title if one matches existing record #}
+                  {% for title in titles %}
+                    {% set selected = title == profile['title'] ? 'selected' : '' %}
+                    <option value="{{ title }}" {{ selected }}>{{ title }}</option>
+                  {% endfor %}
 
-                {% for title in titles %}
-                  {% set selected = title == profile['title'] ? 'selected' : '' %}
-                  <option value="{{ title }}" {{ selected }}>{{ title }}</option>
-                {% endfor %}
-
-              </select>
+                </select>
+              </div>
             </div>
-          </div>
 
-          <!-- first name -->
-          <div class="form-group row">
-            <label for="personFname" class="col-sm-3 col-form-label col-form-label-sm">First name</label>
-            <div class="col-sm-9">
-              <input type="text" name="personFname" class="form-control form-control-sm" />
+            <!-- first name -->
+            <div class="form-group row">
+              <label for="personFname" class="col-sm-3 col-form-label col-form-label-sm">First name</label>
+              <div class="col-sm-9">
+                <input type="text" name="personFname" class="form-control form-control-sm" value="{{ profile['fname'] }}" />
+              </div>
             </div>
-          </div>
 
-          <!-- last name -->
-          <div class="form-group row">
-            <label for="personLname" class="col-sm-3 col-form-label col-form-label-sm">Last name</label>
-            <div class="col-sm-9">
-              <input type="text" name="personLname" class="form-control form-control-sm" />
+            <!-- last name -->
+            <div class="form-group row">
+              <label for="personLname" class="col-sm-3 col-form-label col-form-label-sm">Last name</label>
+              <div class="col-sm-9">
+                <input type="text" name="personLname" class="form-control form-control-sm" value="{{ profile['lname'] }}" />
+              </div>
             </div>
-          </div>
 
-          <!-- email -->
-          <div class="form-group row">
-            <label for="personEmail" class="col-sm-3 col-form-label col-form-label-sm">Email</label>
-            <div class="col-sm-9">
-              <input type="email" name="personEmail" class="form-control form-control-sm" />
+            <!-- email -->
+            <div class="form-group row">
+              <label for="personEmail" class="col-sm-3 col-form-label col-form-label-sm">Email</label>
+              <div class="col-sm-9">
+                <input type="email" name="personEmail" class="form-control form-control-sm" value="{{ profile['email'] }}" />
+              </div>
             </div>
-          </div>
 
-          <!-- telephone -->
-          <div class="form-group row">
-            <label for="personTel" class="col-sm-3 col-form-label col-form-label-sm">Telephone</label>
-            <div class="col-sm-9">
-              <input type="text" name="personTel" class="form-control form-control-sm" />
+            <!-- telephone -->
+            <div class="form-group row">
+              <label for="personTel" class="col-sm-3 col-form-label col-form-label-sm">Telephone</label>
+              <div class="col-sm-9">
+                <input type="text" name="personTel" class="form-control form-control-sm" value="{{ profile['tel'] }}" />
+              </div>
             </div>
-          </div>
 
-          <!-- DOB -->
-          <div class="form-group row">
-            <label for="personDOB" class="col-sm-3 col-form-label col-form-label-sm">Date of birth</label>
-            <div class="col-sm-9">
-              <input type="date" name="personDOB" class="form-control form-control-sm" />
+            <!-- DOB -->
+            <div class="form-group row">
+              <label for="personDOB" class="col-sm-3 col-form-label col-form-label-sm">Date of birth</label>
+              <div class="col-sm-9">
+                <input type="date" name="personDOB" class="form-control form-control-sm" value="{{ profile['dob'] }}" />
+              </div>
             </div>
-          </div>
 
-          <!-- address -->
-          <div class="form-group row">
-            <label for="personAdr" class="col-sm-3 col-form-label col-form-label-sm">Address</label>
-            <div class="col-sm-9">
-              <input type="text" name="personAdr" class="form-control form-control-sm" />
+            <!-- address -->
+            <div class="form-group row">
+              <label for="personAdr" class="col-sm-3 col-form-label col-form-label-sm">Address</label>
+              <div class="col-sm-9">
+                <input type="text" name="personAdr" class="form-control form-control-sm" value="{{ profile['address'] }}" />
+              </div>
             </div>
-          </div>
 
-          <!-- postcode -->
-          <div class="form-group row">
-            <label for="personPostcode" class="col-sm-3 col-form-label col-form-label-sm">Postcode</label>
-            <div class="col-sm-9">
-              <input type="text" name="personPostcode" class="form-control form-control-sm" />
+            <!-- postcode -->
+            <div class="form-group row">
+              <label for="personPostcode" class="col-sm-3 col-form-label col-form-label-sm">Postcode</label>
+              <div class="col-sm-9">
+                <input type="text" name="personPostcode" class="form-control form-control-sm" value="{{ profile['postcode'] }}" />
+              </div>
             </div>
-          </div>
 
-          <!-- country -->
-          <div class="form-group row">
-            <label for="personCountry" class="col-sm-3 col-form-label col-form-label-sm">Country</label>
-            <div class="col-sm-9">
-              <input type="text" name="personCountry" class="form-control form-control-sm" />
+            <!-- country -->
+            <div class="form-group row">
+              <label for="personCountry" class="col-sm-3 col-form-label col-form-label-sm">Country</label>
+              <div class="col-sm-9">
+                <input type="text" name="personCountry" class="form-control form-control-sm" value="{{ profile['country'] }}" />
+              </div>
             </div>
-          </div>
 
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Save</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 </div>
 

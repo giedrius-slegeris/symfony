@@ -10,6 +10,10 @@
 <!-- page specific stylesheets -->
 <link href="{{ asset('css/profile/profile.css') }}" rel="stylesheet" />
 
+<pre>
+{{ dump(data) }}
+</pre>
+
 <div class="row">
   <div class="col-sm-12 col-md-6">
 
@@ -17,9 +21,9 @@
 
       <!-- title -->
       <div class="form-group row">
-        <label for="personTitle" class="col-sm-3 col-form-label col-form-label-sm">Title</label>
+        <label for="form[personTitle]" class="col-sm-3 col-form-label col-form-label-sm">Title</label>
         <div class="col-sm-9">
-          <select name="personTitle" class="form-control form-control-sm">
+          <select name="form[personTitle]" class="form-control form-control-sm">
             {% for title in titles %}
               <option value="{{ title }}">{{ title }}</option>
             {% endfor %}
@@ -29,74 +33,73 @@
 
       <!-- first name -->
       <div class="form-group row">
-        <label for="personFname" class="col-sm-3 col-form-label col-form-label-sm">First name</label>
+        <label for="form[personFname]" class="col-sm-3 col-form-label col-form-label-sm">First name</label>
         <div class="col-sm-9">
-          <input type="text" name="personFname" class="form-control form-control-sm" />
+          <input type="text" name="form[personFname]" class="form-control form-control-sm" />
         </div>
       </div>
 
       <!-- last name -->
       <div class="form-group row">
-        <label for="personLname" class="col-sm-3 col-form-label col-form-label-sm">Last name</label>
+        <label for="form[personLname]" class="col-sm-3 col-form-label col-form-label-sm">Last name</label>
         <div class="col-sm-9">
-          <input type="text" name="personLname" class="form-control form-control-sm" />
+          <input type="text" name="form[personLname]" class="form-control form-control-sm" />
         </div>
       </div>
 
       <!-- email -->
       <div class="form-group row">
-        <label for="personEmail" class="col-sm-3 col-form-label col-form-label-sm">Email</label>
+        <label for="form[personEmail]" class="col-sm-3 col-form-label col-form-label-sm">Email</label>
         <div class="col-sm-9">
-          <input type="email" name="personEmail" class="form-control form-control-sm" />
+          <input type="email" name="form[personEmail]" class="form-control form-control-sm" />
         </div>
       </div>
 
       <!-- telephone -->
       <div class="form-group row">
-        <label for="personTel" class="col-sm-3 col-form-label col-form-label-sm">Telephone</label>
+        <label for="form[personTel]" class="col-sm-3 col-form-label col-form-label-sm">Telephone</label>
         <div class="col-sm-9">
-          <input type="text" name="personTel" class="form-control form-control-sm" />
+          <input type="text" name="form[personTel]" class="form-control form-control-sm" />
         </div>
       </div>
 
       <!-- DOB -->
       <div class="form-group row">
-        <label for="personDOB" class="col-sm-3 col-form-label col-form-label-sm">Date of birth</label>
+        <label for="form[personDOB]" class="col-sm-3 col-form-label col-form-label-sm">Date of birth</label>
         <div class="col-sm-9">
-          <input type="date" name="personDOB" class="form-control form-control-sm" />
+          <input type="date" name="form[personDOB]" class="form-control form-control-sm" />
         </div>
       </div>
 
       <!-- address -->
       <div class="form-group row">
-        <label for="personAdr" class="col-sm-3 col-form-label col-form-label-sm">Address</label>
+        <label for="form[personAdr]" class="col-sm-3 col-form-label col-form-label-sm">Address</label>
         <div class="col-sm-9">
-          <input type="text" name="personAdr" class="form-control form-control-sm" />
+          <input type="text" name="form[personAdr]" class="form-control form-control-sm" />
         </div>
       </div>
 
       <!-- postcode -->
       <div class="form-group row">
-        <label for="personPostcode" class="col-sm-3 col-form-label col-form-label-sm">Postcode</label>
+        <label for="form[personPostcode]" class="col-sm-3 col-form-label col-form-label-sm">Postcode</label>
         <div class="col-sm-9">
-          <input type="text" name="personPostcode" class="form-control form-control-sm" />
+          <input type="text" name="form[personPostcode]" class="form-control form-control-sm" />
         </div>
       </div>
 
       <!-- country -->
       <div class="form-group row">
-        <label for="personCountry" class="col-sm-3 col-form-label col-form-label-sm">Country</label>
+        <label for="form[personCountry]" class="col-sm-3 col-form-label col-form-label-sm">Country</label>
         <div class="col-sm-9">
-          <input type="text" name="personCountry" class="form-control form-control-sm" />
+          <input type="text" name="form[personCountry]" class="form-control form-control-sm" />
         </div>
       </div>
 
       <div class="form-group row">
         <div id="personFormButtons" class="col-sm-12">
-          <input type="submit" name="personFormSubmitBtn" class="btn btn-sm btn-primary" value="Save" />
+          <input type="submit" class="btn btn-sm btn-primary" value="Save" />
         </div>
       </div>
-
     </form>
 
   </div>
