@@ -8,3 +8,6 @@
 #profile_table {
   margin-top: 30px;
 }
+#userUpdateBtn {
+  float: right;
+}

@@ -98,6 +98,32 @@ class ProfileController extends Controller
    */
   public function profileID(Request $request, int $user_id)
   {
+
+    // process update request
+    $form = $this->createFormBuilder()
+      ->add('personID')
+      ->add('personTitle')
+      ->add('personFname')
+      ->add('personLname')
+      ->add('personEmail')
+      ->add('personTel')
+      ->add('personDOB')
+      ->add('personAdr')
+      ->add('personPostcode')
+      ->add('personCountry')
+      ->getForm();
+
+    $form->handleRequest($request);
+
+    if($form->isSubmitted()){
+      echo '<pre>';
+      print_r($form->getData());
+      echo '</pre>';
+      die();
+
+      // TODO: update stuff!
+    }
+
     // $users = $this->user->getUsers();
     $repo = $this->getDoctrine()->getRepository('AppBundle:User');
 
@@ -107,6 +133,8 @@ class ProfileController extends Controller
       // $user_data = $users[$user_id -1];
       $data = $repo->find($user_id);
 
+      $user_data['id'] = $user_id;
+
       $user_data['title'] = $data->getTitle();
       $user_data['fname'] = $data->getFirstname();
       $user_data['lname'] = $data->getLastname();
@@ -114,7 +142,8 @@ class ProfileController extends Controller
       $user_data['tel'] = $data->getTelephone();
 
       $date = $data->getDateOfBirth();
-      $user_data['dob'] = $date->format('d F Y');
+      $user_data['dob'] = $date->format('Y-m-d');
+      $user_data['dob_formatted'] = $date->format('d F Y');
 
       $user_data['address'] = $data->getAddress();
       $user_data['postcode'] = $data->getPostcode();
