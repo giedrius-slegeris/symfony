@@ -1,0 +1,44 @@
+{% extends 'init.html.twig' %}
+
+{# set page title #}
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block body %}
+
+<div class="row">
+  <div class="col-sm-12">
+
+    <p>List all bookings</p>
+    <hr />
+
+    {# bookings table below #}
+    <table class="table table-sm table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Room ID</th>
+          <th>Date In</th>
+          <th>Date Out</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {# list of all bookings #}
+        {% for booking in bookings %}
+          <tr>
+            <td>{{ booking.user.id }}</td>
+            <td>{{ booking.room.id }}</td>
+            <td>{{ booking.dateIn.date | date('j F Y') }}</td>
+            <td>{{ booking.dateOut.date | date('j F Y') }}</td>
+          </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -14,6 +14,21 @@ class BookingController extends Controller
 {
 
   /**
+  * @Route("/bookings", name="bookings")
+  */
+  public function bookings(){
+
+    $bookings = $this->getDoctrine()
+      ->getRepository('AppBundle:Booking')
+      ->findAll();
+
+    return $this->render('booking/index.html.twig', array(
+        'title' => 'All bookings',
+        'bookings' => $bookings
+    ));
+  }
+
+  /**
    * @Route("/book", name="book_room")
    */
   public function bookRoom(Request $request)
