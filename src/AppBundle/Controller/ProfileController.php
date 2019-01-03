@@ -99,6 +99,9 @@ class ProfileController extends Controller
   public function profileID(Request $request, int $user_id)
   {
 
+    $repo = $this->getDoctrine()->getRepository('AppBundle:User');
+    $data = $repo->find($user_id);
+
     // process update request
     $form = $this->createFormBuilder()
       ->add('personID')
@@ -116,42 +119,39 @@ class ProfileController extends Controller
     $form->handleRequest($request);
 
     if($form->isSubmitted()){
-      echo '<pre>';
-      print_r($form->getData());
-      echo '</pre>';
-      die();
 
-      // TODO: update stuff!
+      $update_data = $form->getData();
+
+      $data->setTitle($update_data['personTitle']);
+      $data->setFirstname($update_data['personFname']);
+      $data->setLastname($update_data['personLname']);
+      $data->setEmail($update_data['personEmail']);
+      $data->setTelephone($update_data['personTel']);
+      $data->setDateOfBirth(date_create_from_format('Y-m-d', $update_data['personDOB']));
+      $data->setAddress($update_data['personAdr']);
+      $data->setPostcode($update_data['personPostcode']);
+      $data->setCountry($update_data['personCountry']);
+
+      $em = $this->getDoctrine()->getManager();
+      $em->flush();
     }
 
-    // $users = $this->user->getUsers();
-    $repo = $this->getDoctrine()->getRepository('AppBundle:User');
+    // date for formatting
+    $date = $data->getDateOfBirth();
 
-    $user_data = [];
-
-    try {
-      // $user_data = $users[$user_id -1];
-      $data = $repo->find($user_id);
-
-      $user_data['id'] = $user_id;
-
-      $user_data['title'] = $data->getTitle();
-      $user_data['fname'] = $data->getFirstname();
-      $user_data['lname'] = $data->getLastname();
-      $user_data['email'] = $data->getEmail();
-      $user_data['tel'] = $data->getTelephone();
-
-      $date = $data->getDateOfBirth();
-      $user_data['dob'] = $date->format('Y-m-d');
-      $user_data['dob_formatted'] = $date->format('d F Y');
-
-      $user_data['address'] = $data->getAddress();
-      $user_data['postcode'] = $data->getPostcode();
-      $user_data['country'] = $data->getCountry();
-
-    } catch(\Symfony\Component\Debug\Exception\ContextErrorException $e) {
-      // no action
-    }
+    $user_data = [
+      'id' => $user_id,
+      'title' => $data->getTitle(),
+      'fname' => $data->getFirstname(),
+      'lname' => $data->getLastname(),
+      'email' => $data->getEmail(),
+      'tel' => $data->getTelephone(),
+      'dob' => $date->format('Y-m-d'),
+      'dob_formatted' => $date->format('d F Y'),
+      'address' => $data->getAddress(),
+      'postcode' => $data->getPostcode(),
+      'country' => $data->getCountry()
+    ];
 
     return $this->render('profile/profile_id.html.twig', [
         'title' => 'Profile with ID',
