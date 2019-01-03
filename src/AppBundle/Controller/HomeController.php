@@ -6,6 +6,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+use Symfony\Component\HttpFoundation\Response;
+
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class HomeController extends Controller
@@ -41,6 +43,17 @@ class HomeController extends Controller
         'name' => 'Giedrius',
         'reason' => 'rocks!'
       ]);
+    }
+
+    /**
+    * @Route("/github", name="github")
+    */
+    public function github(){
+
+      $guzzle = new \GuzzleHttp\Client();
+      $res = $guzzle->request('GET', 'https://api.github.com/users/giedrius-slegeris');
+
+      return new JsonResponse(json_decode($res->getBody()));
     }
 
     /**
