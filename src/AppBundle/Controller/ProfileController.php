@@ -31,7 +31,6 @@ class ProfileController extends Controller
     return $this->render('profile/profile.html.twig', array(
         'title' => 'Profile page',
         'name' => 'Giedrius profile',
-        // 'profiles' => count($this->user->getUsers()),
         'profiles' => $users
     ));
   }
@@ -153,10 +152,15 @@ class ProfileController extends Controller
       'country' => $data->getCountry()
     ];
 
+    $rooms = $this->getDoctrine()
+      ->getRepository('AppBundle:Room')
+      ->findAll();
+
     return $this->render('profile/profile_id.html.twig', [
         'title' => 'Profile with ID',
         'profile' => $user_data,
-        'titles' => $this->user->getTitles()
+        'titles' => $this->user->getTitles(),
+        'rooms' => $rooms
     ]);
   }
 

@@ -105,4 +105,52 @@ class Booking
     {
         return $this->dateOut;
     }
+
+    /**
+     * Set user entity
+     *
+     * @param User
+     *
+     * @return Booking
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user entity
+     *
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set room entity
+     *
+     * @param Room
+     *
+     * @return Booking
+     */
+    public function setRoom($room)
+    {
+        $this->room = $room;
+
+        return $this;
+    }
+
+    /**
+     * Get room entity
+     *
+     * @return Room
+     */
+    public function getRoom()
+    {
+        return $this->room;
+    }
 }
