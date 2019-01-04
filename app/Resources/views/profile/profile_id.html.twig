@@ -57,7 +57,7 @@
               <div class="col-sm-9">
                 <select name="form[personTitle]" class="form-control form-control-sm">
 
-                  {# auto select a title if one matches existing record #}
+                  {# auto select a title if one matches an existing record #}
                   {% for title in titles %}
                     {% set selected = title == profile['title'] ? 'selected' : '' %}
                     <option value="{{ title }}" {{ selected }}>{{ title }}</option>
